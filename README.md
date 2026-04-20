@@ -1,39 +1,31 @@
-# 🛡️ Trust Guard AI: BERT-Powered Misinformation Audit Terminal
+# 🛡️ Trust Guard AI: BERT-Based Disinformation Analysis
 
-Trust Guard AI is a high-performance Natural Language Processing (NLP) tool designed to detect linguistic patterns associated with disinformation. Built on the **BERT (Bidirectional Encoder Representations from Transformers)** architecture, this project moves beyond simple keyword blacklisting to analyze the underlying structural and tonal "DNA" of news reporting.
+Trust Guard AI is a high-performance audit terminal designed to detect disinformation patterns in news headlines. By leveraging a fine-tuned **BERT (Bidirectional Encoder Representations from Transformers)** model, this application provides real-time analysis, confidence scoring, and explainable AI metrics via a Streamlit dashboard.
 
-## 🚀 Overview
-This project fine-tunes a `bert-base-uncased` model on the ISOT Fake News Dataset. It features a professional **Streamlit** dashboard that provides real-time inference, confidence scoring, and technical explainability for every audit performed.
-
-## 📊 Technical Audit & Model Performance
-
-### 1. Adversarial Robustness
-During the evaluation phase, the model was stress-tested using "adversarial" headlines—real-world news written with the sensationalist tone often associated with disinformation. 
-
-> **Test Case:** *"Leaked documents suggest a clandestine shift to palm oil biofuels..."*
-> **Result:** **VERIFIED REAL**
-
-**Engineering Insight:** Even when utilizing "red flag" keywords like *clandestine* and *leaked*, the model maintained a correct classification. This demonstrates that the fine-tuning successfully captured the linguistic structure of reporting rather than relying on simple word-matching.
-
-### 2. Bias Identification: The "Conflict" Over-Index
-I discovered the model was initially over-indexed on conflict keywords. While it correctly flagged disinformation, it demonstrated a high "False Positive" rate for dramatic but real-world events. 
-
-**Future Iteration:** To mitigate this, the next phase of development involves introducing more "high-action" verified news into the training set. This helps the model distinguish between "exciting reality" and "malicious fiction."
-
-### 3. Edge-Case Analysis: Technical Jargon
-* **Observed Behavior:** The model flagged a verified quantum computing milestone (IBM Heron r3) as **95% Likely Disinformation**.
-* **Root Cause:** The model exhibits a "False Positive" bias against high-density technical jargon and exponential performance claims. This suggests the training data lacked sufficient representation of specialized scientific and academic reporting.
-* **Engineering Fix:** To reach production-ready status, the system requires a scientific-domain fine-tuning pass or a **Retrieval-Augmented Generation (RAG)** logic to verify technical terms against hardware architecture databases.
+## 🚀 Project Overview
+The core goal of this project was to move beyond simple keyword matching and train a model to recognize the linguistic "fingerprints" of misinformation. The model was trained on the **ISOT Dataset**, which includes thousands of real news articles from Reuters and flagged disinformation from various unreliable sources.
 
 ## 🖼️ Dashboard Preview
-| Verified Pattern | Conflict/Disinfo Detection | Technical Detail Audit |
+| Verified Pattern | Baseline Detection | Technical Detail Audit |
 | :---: | :---: | :---: |
 | ![Verified News](screenshots/verified_success.png) | ![Disinfo Catch](screenshots/disinfo_catch.png) | ![Tech Details](screenshots/tech_audit.png) |
-*(Screenshots showing the Confidence Meter and Explainability Expander)*
 
-## 🛠️ Installation & Setup
+## 🛠️ Technical Audit & Explainability
+One of the key features of this project is the **Technical Audit Expander**. It allows users to see:
+* **Softmax Probability:** The mathematical confidence level of the prediction.
+* **Model Architecture:** Details on the `bert-base-uncased` transformer used.
+* **Logic Constraints:** How the model handles sensationalist language vs. factual reporting.
 
-1. **Clone the Repo:**
+## 📊 Performance Analysis
+During testing, the model proved robust against "adversarial" headlines—factual reports that use sensationalist words like "Leaked" or "Clandestine." However, the audit also revealed areas for improvement regarding highly technical or scientific jargon.
+
+### 🚀 Future Improvements & Model Robustness
+During the audit, the model demonstrated a high sensitivity to technical jargon, occasionally misclassifying dense scientific reporting as disinformation. 
+
+**Engineering Insight:**
+> "The ISOT dataset is highly effective for detecting political sensationalism, but it is heavily biased toward 2016-2017 political rhetoric. To make Trust Guard AI production-ready, the next phase would involve augmenting the training set with technical journals and local news. This would help the model better distinguish between 'complex technical jargon' and 'actual misinformation' patterns."
+
+## ⚙️ Installation & Usage
+1. **Clone the repository:**
    ```bash
    git clone [https://github.com/ggainesjr3/fake-news-bert.git](https://github.com/ggainesjr3/fake-news-bert.git)
-   cd fake-news-bert
